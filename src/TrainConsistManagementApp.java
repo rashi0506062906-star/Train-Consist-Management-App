@@ -1,28 +1,49 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+// Bogie class (Custom Object)
+class Bogie {
+    String name;
+    int capacity;
+
+    public Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    public String toString() {
+        return name + " (Capacity: " + capacity + ")";
+    }
+}
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        // Create HashMap for bogie-capacity mapping
-        HashMap<String, Integer> bogieCapacityMap = new HashMap<>();
+        System.out.println("===== TRAIN CONSIST MANAGEMENT (UC7) =====");
 
-        System.out.println("===== TRAIN CONSIST MANAGEMENT (UC6) =====");
+        // 🔹 Create List of Bogies
+        List<Bogie> bogies = new ArrayList<>();
 
-        // 🔹 Add bogie-capacity mappings
-        bogieCapacityMap.put("Sleeper", 72);
-        bogieCapacityMap.put("AC Chair", 60);
-        bogieCapacityMap.put("First Class", 24);
+        // 🔹 Add passenger bogies
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("First Class", 24));
 
-        // 🔹 Display all entries using entrySet()
-        System.out.println("\nBogie Capacity Details:");
+        // 🔹 Display before sorting
+        System.out.println("\nBefore Sorting:");
+        for (Bogie b : bogies) {
+            System.out.println(b);
+        }
 
-        for (Map.Entry<String, Integer> entry : bogieCapacityMap.entrySet()) {
-            String bogie = entry.getKey();
-            int capacity = entry.getValue();
+        // 🔹 Sort using Comparator (by capacity)
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
 
-            System.out.println("Bogie: " + bogie + " → Capacity: " + capacity);
+        // 🔹 Display after sorting
+        System.out.println("\nAfter Sorting by Capacity (Ascending):");
+        for (Bogie b : bogies) {
+            System.out.println(b);
         }
 
         System.out.println("==========================================");
