@@ -20,32 +20,23 @@ public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("===== TRAIN CONSIST MANAGEMENT (UC9) =====");
+        System.out.println("===== TRAIN CONSIST MANAGEMENT (UC10) =====");
 
         // 🔹 Create list of bogies
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
-        bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("First Class", 24));
-        bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("Sleeper", 72));
 
-        // 🔹 Group bogies by type (name)
-        Map<String, List<Bogie>> groupedBogies =
-                bogies.stream()
-                        .collect(Collectors.groupingBy(b -> b.name));
+        // 🔹 Calculate total seating capacity
+        int totalCapacity = bogies.stream()
+                .map(b -> b.capacity)          // extract capacity
+                .reduce(0, Integer::sum);      // sum all values
 
-        // 🔹 Display grouped result
-        System.out.println("\nGrouped Bogies by Type:");
+        // 🔹 Display result
+        System.out.println("\nTotal Seating Capacity: " + totalCapacity);
 
-        for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
-            System.out.println("\nType: " + entry.getKey());
-
-            for (Bogie b : entry.getValue()) {
-                System.out.println("  " + b);
-            }
-        }
-
-        System.out.println("\n==========================================");
+        System.out.println("==========================================");
     }
 }
