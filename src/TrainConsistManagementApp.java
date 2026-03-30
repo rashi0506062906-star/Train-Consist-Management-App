@@ -1,27 +1,40 @@
-import java.util.HashSet;
+import java.util.LinkedList;
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        // Create HashSet for unique bogie IDs
-        HashSet<String> bogieIds = new HashSet<>();
+        // Create LinkedList for train consist
+        LinkedList<String> trainConsist = new LinkedList<>();
 
-        System.out.println("===== TRAIN CONSIST MANAGEMENT (UC3) =====");
+        System.out.println("===== TRAIN CONSIST MANAGEMENT (UC4) =====");
 
-        // 🔹 Add bogie IDs (including duplicates)
-        bogieIds.add("BG101");
-        bogieIds.add("BG102");
-        bogieIds.add("BG103");
-        bogieIds.add("BG101"); // duplicate
-        bogieIds.add("BG102"); // duplicate
+        // 🔹 Add bogies (order matters)
+        trainConsist.add("Engine");
+        trainConsist.add("Sleeper");
+        trainConsist.add("AC");
+        trainConsist.add("Cargo");
+        trainConsist.add("Guard");
 
-        // 🔹 Display final set
-        System.out.println("\nBogie IDs after insertion (duplicates ignored):");
-        System.out.println(bogieIds);
+        System.out.println("\nInitial Train Consist:");
+        System.out.println(trainConsist);
 
-        // 🔹 Show size to prove uniqueness
-        System.out.println("\nTotal Unique Bogies: " + bogieIds.size());
+        // 🔹 Insert Pantry Car at position 2
+        trainConsist.add(2, "Pantry");
+
+        System.out.println("\nAfter Adding Pantry Car at position 2:");
+        System.out.println(trainConsist);
+
+        // 🔹 Remove first and last bogie
+        trainConsist.removeFirst();  // Engine removed
+        trainConsist.removeLast();   // Guard removed
+
+        System.out.println("\nAfter Removing First and Last Bogie:");
+        System.out.println(trainConsist);
+
+        // 🔹 Final ordered consist
+        System.out.println("\nFinal Train Consist:");
+        System.out.println(trainConsist);
 
         System.out.println("==========================================");
     }
