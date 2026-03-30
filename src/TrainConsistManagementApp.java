@@ -1,41 +1,28 @@
-import java.util.ArrayList;
+import java.util.HashSet;
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        // Create ArrayList for passenger bogies
-        ArrayList<String> passengerBogies = new ArrayList<>();
+        // Create HashSet for unique bogie IDs
+        HashSet<String> bogieIds = new HashSet<>();
 
-        System.out.println("===== TRAIN CONSIST MANAGEMENT =====");
+        System.out.println("===== TRAIN CONSIST MANAGEMENT (UC3) =====");
 
-        // 🔹 Add bogies
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        // 🔹 Add bogie IDs (including duplicates)
+        bogieIds.add("BG101");
+        bogieIds.add("BG102");
+        bogieIds.add("BG103");
+        bogieIds.add("BG101"); // duplicate
+        bogieIds.add("BG102"); // duplicate
 
-        // 🔹 Display after insertion
-        System.out.println("\nAfter Adding Passenger Bogies:");
-        System.out.println(passengerBogies);
+        // 🔹 Display final set
+        System.out.println("\nBogie IDs after insertion (duplicates ignored):");
+        System.out.println(bogieIds);
 
-        // 🔹 Remove one bogie (AC Chair)
-        passengerBogies.remove("AC Chair");
+        // 🔹 Show size to prove uniqueness
+        System.out.println("\nTotal Unique Bogies: " + bogieIds.size());
 
-        System.out.println("\nAfter Removing 'AC Chair':");
-        System.out.println(passengerBogies);
-
-        // 🔹 Check existence
-        String checkBogie = "Sleeper";
-        if (passengerBogies.contains(checkBogie)) {
-            System.out.println("\nBogie '" + checkBogie + "' exists in the train.");
-        } else {
-            System.out.println("\nBogie '" + checkBogie + "' does NOT exist.");
-        }
-
-        // 🔹 Final state
-        System.out.println("\nFinal Passenger Bogie List:");
-        System.out.println(passengerBogies);
-
-        System.out.println("====================================");
+        System.out.println("==========================================");
     }
 }
