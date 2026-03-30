@@ -1,55 +1,41 @@
 import java.util.ArrayList;
-import java.util.List;
 
-// Base class for all bogies
-class Bogie {
-    protected String id;
-    protected String type;
-
-    public Bogie(String id, String type) {
-        this.id = id;
-        this.type = type;
-    }
-
-    public String getDetails() {
-        return "Bogie ID: " + id + ", Type: " + type;
-    }
-}
-
-// Train class managing consist
-class Train {
-    private String trainId;
-    private List<Bogie> bogies;
-
-    public Train(String trainId) {
-        this.trainId = trainId;
-        this.bogies = new ArrayList<>();
-    }
-
-    public void displaySummary() {
-        System.out.println("===== TRAIN CONSIST SUMMARY =====");
-        System.out.println("Train ID: " + trainId);
-
-        if (bogies.isEmpty()) {
-            System.out.println("No bogies attached to the train.");
-        } else {
-            System.out.println("Total Bogies: " + bogies.size());
-            for (Bogie b : bogies) {
-                System.out.println(b.getDetails());
-            }
-        }
-        System.out.println("=================================");
-    }
-}
-
-// Main Application Class
 public class TrainConsistManagementApp {
+
     public static void main(String[] args) {
 
-        // Initialize train
-        Train train = new Train("TRAIN-101");
+        // Create ArrayList for passenger bogies
+        ArrayList<String> passengerBogies = new ArrayList<>();
 
-        // Display initial state
-        train.displaySummary();
+        System.out.println("===== TRAIN CONSIST MANAGEMENT =====");
+
+        // 🔹 Add bogies
+        passengerBogies.add("Sleeper");
+        passengerBogies.add("AC Chair");
+        passengerBogies.add("First Class");
+
+        // 🔹 Display after insertion
+        System.out.println("\nAfter Adding Passenger Bogies:");
+        System.out.println(passengerBogies);
+
+        // 🔹 Remove one bogie (AC Chair)
+        passengerBogies.remove("AC Chair");
+
+        System.out.println("\nAfter Removing 'AC Chair':");
+        System.out.println(passengerBogies);
+
+        // 🔹 Check existence
+        String checkBogie = "Sleeper";
+        if (passengerBogies.contains(checkBogie)) {
+            System.out.println("\nBogie '" + checkBogie + "' exists in the train.");
+        } else {
+            System.out.println("\nBogie '" + checkBogie + "' does NOT exist.");
+        }
+
+        // 🔹 Final state
+        System.out.println("\nFinal Passenger Bogie List:");
+        System.out.println(passengerBogies);
+
+        System.out.println("====================================");
     }
 }
